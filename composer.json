@@ -1,0 +1,27 @@
+{
+  "name": "mslwk/php-typesafe-array",
+  "description": "Library for type-safe array handling in PHP",
+  "license": [
+    "MIT"
+  ],
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Maciej Sławik",
+      "email": "maciekslawik@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.1",
+    "php-coveralls/php-coveralls": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "MSlwk\\TypeSafeArray\\": "src",
+      "MSlwk\\TypeSafeArray\\Test\\": "tests"
+    }
+  }
+}

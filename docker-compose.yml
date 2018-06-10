@@ -1,0 +1,10 @@
+version: '3.1'
+
+services:
+    php:
+        image: maciejslawik/php-fpm-xdebug:7.1
+        volumes:
+            - .:/var/www/html
+        environment:
+            XDEBUG_CONFIG: "remote_host=${XDEBUG_HOST_IP} idekey=${XDEBUG_IDE_KEY}"
+            PHP_IDE_CONFIG: "serverName=${PHP_IDE_CONFIG_SERVERNAME}"

@@ -1,0 +1,15 @@
+checks:
+    php:
+        code_rating: true
+
+build:
+    environment:
+        php:
+            version: 7.1
+    tests:
+        override:
+            -
+                command: vendor/bin/phpunit --coverage-clover=build/logs/clover
+                coverage:
+                    file: build/logs/clover
+                    format: php-clover
