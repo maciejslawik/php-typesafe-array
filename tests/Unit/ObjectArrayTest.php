@@ -4,8 +4,8 @@ declare(strict_types=1);
 /**
  * File:ObjectArrayTest.php
  *
- * @author Maciej Sławik <maciej.slawik@lizardmedia.pl>
- * @copyright Copyright (C) 2018 Lizard Media (http://lizardmedia.pl)
+ * @author      Maciej Sławik <maciekslawik@gmail.com>
+ * Github:      https://github.com/maciejslawik
  */
 
 namespace MSlwk\TypeSafeArray\Test\Unit;

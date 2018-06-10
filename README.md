@@ -1,3 +1,10 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/maciejslawik/php-typesafe-array/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maciejslawik/php-typesafe-array/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/maciejslawik/php-typesafe-array/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/maciejslawik/php-typesafe-array/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/maciejslawik/php-typesafe-array/badges/build.png?b=master)](https://scrutinizer-ci.com/g/maciejslawik/php-typesafe-array/build-status/master)
+[![Latest Stable Version](https://poser.pugx.org/mslwk/php-typesafe-array/v/stable)](https://packagist.org/packages/mslwk/php-typesafe-array)
+[![License](https://poser.pugx.org/mslwk/php-typesafe-array/license)](https://packagist.org/packages/mslwk/php-typesafe-array)
+[![Total Downloads](https://poser.pugx.org/mslwk/php-typesafe-array/downloads)](https://packagist.org/packages/mslwk/php-typesafe-array)
+
 # PHP type-safe array
 
 This library was designed to provide you with a way of creating type-safe array-like classes.
