@@ -49,6 +49,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
 
     /**
      * @param $value
+     * @return void
      * @throws InvalidArgumentException
      */
     public function add($value)
@@ -78,6 +79,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
     /**
      * @param mixed $offset
      * @param mixed $value
+     * @return void
      * @throws InvalidArgumentException
      */
     public function offsetSet($offset, $value)
@@ -88,6 +90,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
 
     /**
      * @param mixed $offset
+     * @return void
      */
     public function offsetUnset($offset)
     {
@@ -144,6 +147,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
 
     /**
      * @param $object
+     * @return void
      * @throws InvalidArgumentException
      */
     private function validateObjectType($object)
