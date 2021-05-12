@@ -15,6 +15,7 @@ use ArrayIterator;
 use Countable;
 use InvalidArgumentException;
 use Iterator;
+use function get_class;
 
 /**
  * Class ObjectArray
@@ -35,10 +36,10 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
     /**
      * ObjectArray constructor.
      * @param string $type
-     * @param array $objects
+     * @param iterable $objects
      * @throws InvalidArgumentException
      */
-    public function __construct(string $type, array $objects = [])
+    public function __construct(string $type, iterable $objects = [])
     {
         $this->type = $type;
         foreach ($objects as $object) {
@@ -52,7 +53,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
      * @return void
      * @throws InvalidArgumentException
      */
-    public function add($value)
+    public function add($value): void
     {
         $this->validateObjectType($value);
         $this->iterator->append($value);
@@ -62,7 +63,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
      * @param mixed $offset
      * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return $this->iterator->offsetExists($offset);
     }
@@ -82,7 +83,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
      * @return void
      * @throws InvalidArgumentException
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->validateObjectType($value);
         $this->iterator->offsetSet($offset, $value);
@@ -92,7 +93,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
      * @param mixed $offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         $this->iterator->offsetUnset($offset);
     }
@@ -100,7 +101,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
     /**
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return $this->iterator->count();
     }
@@ -116,7 +117,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
     /**
      * @return void
      */
-    public function next()
+    public function next(): void
     {
         $this->iterator->next();
     }
@@ -132,7 +133,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
     /**
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->iterator->valid();
     }
@@ -140,7 +141,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
     /**
      * @return void
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->iterator->rewind();
     }
@@ -150,7 +151,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
      * @return void
      * @throws InvalidArgumentException
      */
-    private function validateObjectType($object)
+    private function validateObjectType($object): void
     {
         if (!$object instanceof $this->type) {
             throw new InvalidArgumentException(
