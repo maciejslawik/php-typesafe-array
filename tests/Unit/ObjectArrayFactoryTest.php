@@ -22,16 +22,13 @@ use PHPUnit\Framework\TestCase;
 class ObjectArrayFactoryTest extends TestCase
 {
     /**
-     * @test
+     * @return void
      */
-    public function testFactoryReturnsCorrectClass()
+    public function testFactoryReturnsCorrectClass(): void
     {
         $factory = new ObjectArrayFactory();
-
         $expected = ObjectArray::class;
-
         $arrayClass = $factory->create(DateTime::class);
-
         $this->assertInstanceOf($expected, $arrayClass);
     }
 }

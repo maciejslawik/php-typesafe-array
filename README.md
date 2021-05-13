@@ -22,6 +22,10 @@ Use composer to install the library
 composer require mslwk/php-typesafe-array
 ```
 
+## Changelog
+
+See changelog [here](CHANGELOG.md).
+
 ## Authors
 
 * [Maciej Sławik](https://github.com/maciejslawik)

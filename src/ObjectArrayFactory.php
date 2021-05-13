@@ -20,11 +20,11 @@ class ObjectArrayFactory
 {
     /**
      * @param string $type
-     * @param array $objects
+     * @param iterable $objects
      * @return ObjectArray
      * @throws InvalidArgumentException
      */
-    public function create(string $type, array $objects = []): ObjectArray
+    public function create(string $type, iterable $objects = []): ObjectArray
     {
         return new ObjectArray($type, $objects);
     }

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace MSlwk\TypeSafeArray\Test\Unit;
 
+use ArrayIterator;
 use DateTime;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -23,15 +24,18 @@ use PHPUnit\Framework\TestCase;
 class ObjectArrayTest extends TestCase
 {
     /**
-     * @test
+     * @dataProvider provideDifferentIterables
+     * @param iterable $iterable
+     * @return void
      */
-    public function testOperationsOnArray()
+    public function testOperationsOnArray(iterable $iterable): void
     {
         $object1 = new DateTime();
         $object2 = new DateTime();
         $object3 = new DateTime();
         $object4 = new DateTime();
-        $objectArray = new ObjectArray(DateTime::class, [$object2]);
+        $iterable[] = $object2;
+        $objectArray = new ObjectArray(DateTime::class, $iterable);
         $objectArray[1] = $object3;
         $objectArray->offsetSet(2, $object4);
         $objectArray->add($object1);
@@ -63,20 +67,23 @@ class ObjectArrayTest extends TestCase
     }
 
     /**
-     * @test
+     * @dataProvider provideDifferentIterables
+     * @param iterable $iterable
+     * @return void
      */
-    public function testAddingWrongTypeViaConstructor()
+    public function testAddingWrongTypeViaConstructor(iterable $iterable): void
     {
         $this->expectException(InvalidArgumentException::class);
 
         $object = new DateTimeImmutable();
-        $objectArray = new ObjectArray(DateTime::class, [$object]);
+        $iterable[] = $object;
+        new ObjectArray(DateTime::class, $iterable);
     }
 
     /**
-     * @test
+     * @return void
      */
-    public function testAddingWrongTypeViaOffsetSet()
+    public function testAddingWrongTypeViaOffsetSet(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -86,9 +93,9 @@ class ObjectArrayTest extends TestCase
     }
 
     /**
-     * @test
+     * @return void
      */
-    public function testAddingWrongTypeViaAdd()
+    public function testAddingWrongTypeViaAdd(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -98,14 +105,29 @@ class ObjectArrayTest extends TestCase
     }
 
     /**
-     * @test
+     * @return void
      */
-    public function testAddingWrongTypeViaArrayAccess()
+    public function testAddingWrongTypeViaArrayAccess(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
         $object = new DateTimeImmutable();
         $objectArray = new ObjectArray(DateTime::class);
         $objectArray[0] = $object;
+    }
+
+    /**
+     * @return array
+     */
+    public function provideDifferentIterables(): array
+    {
+        return [
+            'plain_array' => [
+                []
+            ],
+            'iterator' => [
+                new ArrayIterator()
+            ]
+        ];
     }
 }
