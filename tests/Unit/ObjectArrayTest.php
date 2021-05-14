@@ -10,10 +10,12 @@ declare(strict_types=1);
 
 namespace MSlwk\TypeSafeArray\Test\Unit;
 
+use ArrayAccess;
 use ArrayIterator;
 use DateTime;
 use DateTimeImmutable;
 use InvalidArgumentException;
+use IteratorAggregate;
 use MSlwk\TypeSafeArray\ObjectArray;
 use PHPUnit\Framework\TestCase;
 
@@ -121,12 +123,48 @@ class ObjectArrayTest extends TestCase
      */
     public function provideDifferentIterables(): array
     {
+        $iteratorAggregate = new class() implements IteratorAggregate, ArrayAccess {
+            private $innerIterator;
+            public function __construct()
+            {
+                $this->innerIterator = new ArrayIterator();
+            }
+
+            public function getIterator(): ArrayIterator
+            {
+                return $this->innerIterator;
+            }
+
+            public function offsetExists($offset): bool
+            {
+                return $this->innerIterator->offsetExists($offset);
+            }
+
+            public function offsetGet($offset)
+            {
+                return $this->innerIterator->offsetGet($offset);
+            }
+
+            public function offsetSet($offset, $value): void
+            {
+                $this->innerIterator->offsetSet($offset, $value);
+            }
+
+            public function offsetUnset($offset): void
+            {
+                $this->innerIterator->offsetUnset($offset);
+            }
+        };
+
         return [
             'plain_array' => [
                 []
             ],
             'iterator' => [
                 new ArrayIterator()
+            ],
+            'iterator-aggregate' => [
+                $iteratorAggregate
             ]
         ];
     }

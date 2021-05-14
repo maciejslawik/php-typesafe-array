@@ -6,3 +6,6 @@
 
 2.0.0
 * allowing to create `ObjectArray` from iterators (iterable psuedo-type - https://www.php.net/manual/en/language.types.iterable.php)
+
+2.0.1
+* fix for `IteratorAggregate` iterable
