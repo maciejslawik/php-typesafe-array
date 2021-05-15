@@ -42,10 +42,10 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
     public function __construct(string $type, iterable $objects = [])
     {
         $this->type = $type;
+        $this->iterator = new ArrayIterator();
         foreach ($objects as $object) {
-            $this->validateObjectType($object);
+            $this->add($object);
         }
-        $this->iterator = new ArrayIterator($objects);
     }
 
     /**
