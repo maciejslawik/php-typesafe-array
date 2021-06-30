@@ -30,7 +30,7 @@ class ObjectArrayTest extends TestCase
      * @param iterable $iterable
      * @return void
      */
-    public function testOperationsOnArray(iterable $iterable): void
+    public function testOperationsOnArrayWithDifferentIterables(iterable $iterable): void
     {
         $object1 = new DateTime();
         $object2 = new DateTime();
@@ -66,6 +66,22 @@ class ObjectArrayTest extends TestCase
         $this->assertEquals(0, $objectArray->key());
         $objectArray->next();
         $this->assertEquals(1, $objectArray->key());
+    }
+
+    /**
+     * @dataProvider provideDifferentIterables
+     * @param iterable $iterable
+     * @return void
+     */
+    public function testOperationsWithDifferentIterablesWithKeyValueStructure(iterable $iterable): void
+    {
+        $object = new DateTime();
+        $exampleKey = 'test';
+        $iterable[$exampleKey] = $object;
+
+        $objectArray = new ObjectArray(DateTime::class, $iterable);
+        $this->assertTrue($objectArray->offsetExists($exampleKey));
+        $this->assertSame($object, $objectArray->offsetGet($exampleKey));
     }
 
     /**

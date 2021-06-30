@@ -9,3 +9,6 @@
 
 2.0.1
 * fix for `IteratorAggregate` iterable
+
+2.0.2
+* fix for ObjectArray not preserving keys when built on top of iterable with key-value structure

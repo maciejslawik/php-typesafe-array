@@ -43,8 +43,8 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
     {
         $this->type = $type;
         $this->iterator = new ArrayIterator();
-        foreach ($objects as $object) {
-            $this->add($object);
+        foreach ($objects as $key => $object) {
+            $this->offsetSet($key, $object);
         }
     }
 
