@@ -4,7 +4,6 @@
   "license": [
     "MIT"
   ],
-  "version": "2.0.2",
   "authors": [
     {
       "name": "Maciej Sławik",
@@ -12,7 +11,7 @@
     }
   ],
   "require": {
-    "php": "^7.1"
+    "php": ">=7.1"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.1",
