@@ -23,15 +23,8 @@ use function get_class;
  */
 class ObjectArray implements Countable, ArrayAccess, Iterator
 {
-    /**
-     * @var string
-     */
-    private $type;
-
-    /**
-     * @var ArrayIterator
-     */
-    private $iterator;
+    private string $type;
+    private ArrayIterator $iterator;
 
     /**
      * ObjectArray constructor.
@@ -49,11 +42,11 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
     }
 
     /**
-     * @param $value
+     * @param mixed $value
      * @return void
      * @throws InvalidArgumentException
      */
-    public function add($value): void
+    public function add(mixed $value): void
     {
         $this->validateObjectType($value);
         $this->iterator->append($value);
@@ -63,7 +56,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
      * @param mixed $offset
      * @return bool
      */
-    public function offsetExists($offset): bool
+    public function offsetExists(mixed $offset): bool
     {
         return $this->iterator->offsetExists($offset);
     }
@@ -72,18 +65,18 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
      * @param mixed $offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->iterator->offsetGet($offset);
     }
 
     /**
      * @param mixed $offset
-     * @param mixed $value
+     * @param object $value
      * @return void
      * @throws InvalidArgumentException
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         $this->validateObjectType($value);
         $this->iterator->offsetSet($offset, $value);
@@ -93,7 +86,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
      * @param mixed $offset
      * @return void
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset(mixed $offset): void
     {
         $this->iterator->offsetUnset($offset);
     }
@@ -109,7 +102,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
     /**
      * @return mixed
      */
-    public function current()
+    public function current(): mixed
     {
         return $this->iterator->current();
     }
@@ -125,7 +118,7 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
     /**
      * @return mixed
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->iterator->key();
     }
@@ -147,11 +140,11 @@ class ObjectArray implements Countable, ArrayAccess, Iterator
     }
 
     /**
-     * @param $object
+     * @param mixed $object
      * @return void
      * @throws InvalidArgumentException
      */
-    private function validateObjectType($object): void
+    private function validateObjectType(mixed $object): void
     {
         if (!$object instanceof $this->type) {
             throw new InvalidArgumentException(
